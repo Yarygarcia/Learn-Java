@@ -1,12 +1,15 @@
 public class AeropuertoPublico extends Aeropuerto{
 
     private double dineroNacion;
+
+    public AeropuertoPublico(String nombre, String ciudad, String pais){
+        super(nombre, ciudad, pais);
+    }
     public AeropuertoPublico(String nombre, String ciudad, String pais, double dineroNacion) {
         super(nombre, ciudad, pais);
         this.dineroNacion = dineroNacion;
     }
-
-    public void mostrarCompanies(){
-
-    };
+    public double getDineroNacion() {
+        return dineroNacion;
+    }
 }

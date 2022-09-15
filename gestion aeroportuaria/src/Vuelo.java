@@ -42,11 +42,13 @@ public class Vuelo {
     public int getCantidadPasajeros() {
         return cantidadPasajeros;
     }
-    public void obtenerPasajero(Pasajero pasajero[], String pasaporte){
-        for(int i =0; i <pasajero.length; i++){
-            if(pasajero[i].getIdPasaporte() == pasaporte){
-                System.out.println(pasajero[i]);
+    public Pasajero obtenerPasajero(String pasaporte){
+        Pasajero pasajero= null;
+        for(int i =0; i <listaPasajeros.length; i++){
+            if(listaPasajeros[i].getIdPasaporte().equals(pasaporte)){
+                pasajero = listaPasajeros[i];
             }
         }
+        return pasajero;
     }
 }
