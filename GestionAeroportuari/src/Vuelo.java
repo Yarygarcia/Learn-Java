@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Vuelo {
     private int  idVuelo;
     private String ciudadOrigen;

@@ -14,6 +14,7 @@ public class AeropuertoPublico extends Aeropuerto{
         super(nombre, ciudad, pais);
         this.dineroNacion = dineroNacion;
     }
+
     public double getDineroNacion() {
         return dineroNacion;
     }

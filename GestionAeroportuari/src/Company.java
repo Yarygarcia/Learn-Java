@@ -1,6 +1,4 @@
-import java.nio.charset.CoderMalfunctionError;
-
-public class Company{
+public class Company {
     private String nameCompany;
     private Vuelo listaVuelos[] = new Vuelo[10];
     private int numVuelo=0;
