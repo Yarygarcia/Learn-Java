@@ -1,3 +1,5 @@
+import java.lang.reflect.GenericArrayType;
+
 public class Aeropuerto {
     private String nombre;
     private String ciudad;
@@ -25,11 +27,15 @@ public class Aeropuerto {
         numCompany++;
     }
     public Company traerComapy(String nombre){
+        boolean encontrado = false;
+        int i =0;
         Company company=null;
-        for(int i =0; i < listCompanies.length; i++){
-            if(listCompanies[i].getNameCompany().equals(nombre)){
+        while ((!encontrado)&& (i < listCompanies.length)){
+            if(nombre == listCompanies[i].getNameCompany()){
+                encontrado = true;
                 company = listCompanies[i];
             }
+            i++;
         }
         return company;
     }

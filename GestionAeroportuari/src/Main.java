@@ -6,37 +6,11 @@ public class Main {
     static String empresasPatrocinadoras[] = {"Ecopetrol", "Claro", "Mercado Libre", "Santo Domingo"};
     static String empresasPatrocinadoras2[] = {"Isagen", "Aardila Lule", "Emp"};
 
-    //--------Vuelos------
-    static Vuelo vuelo1 = new Vuelo(003, "Rionegro", "Atlanta", 120000, 67);
-    static Vuelo vuelo3 = new Vuelo(021, "Rionegro", "Bogota", 120000, 72);
-    static Vuelo vuelo4 = new Vuelo(002, "Rionegro", "Sidny", 1700000, 70);
-    static Vuelo vuelo5 = new Vuelo(031, "Rionegro", "Tokio", 2350000, 68);
 
-    static Vuelo vuelo2 = new Vuelo(103, "Bogotá", "Madrid", 400000, 70);
-    static Vuelo vuelo6 = new Vuelo(130,"Bogotá", "Seúl", 3000000, 70);
-    static Vuelo vuelo7 =  new Vuelo(107, "Bogotá", "Miami", 1000000, 78);
-    static Vuelo vuelo8 = new Vuelo(121, "Bogotá", "Londres", 1800000, 66);
-    static Vuelo vuelo9 = new Vuelo(109, "Bogotá", "Medellín", 80000, 80 );
-    static Vuelo vuelo10 = new Vuelo(160, "Bogotá", "Paris", 2200000, 60);
-
-    static Vuelo vuelo11 = new Vuelo(202, "Medellín", "Cali", 95000, 70);
-    static Vuelo vuelo12 = new Vuelo(270, "Medellín", "Cartagena", 120000, 55);
-    static Vuelo vuelo13 = new Vuelo(284, "Medellín", "Barranquilla", 120000, 60);
-    static Vuelo vuelo14 = new Vuelo(251, "Medellín", "Choco", 70000, 60);
-
-    static Vuelo vuelo15 = new Vuelo(301, "Cartagena", "SanAndres", 170000, 68);
-    static Vuelo vuelo16 = new Vuelo(361, "Cartagena", "Rionegro", 80000, 70);
-    static Vuelo vuelo17 = new Vuelo(3001, "Cartagena", "Bogotá", 110000, 76);
-    static Vuelo vuelo18 = new Vuelo(360, "Cartagena", "Boston", 1900000, 70);
-
-    static Vuelo vuelos[] ={vuelo1,vuelo2,vuelo3,vuelo4,vuelo5,vuelo6,vuelo7,vuelo8,vuelo9,vuelo10,vuelo11,vuelo12,vuelo13,vuelo14,vuelo15,vuelo16,vuelo17,vuelo18};
     //------------Aeropuertos-------------
     final static int numAeropuerto = 4;
     static Aeropuerto aeropuerto[] = new Aeropuerto[numAeropuerto];
-    static Aeropuerto aeropuertoPublico2 = new AeropuertoPublico("El Dorado", "CD Bogota", "Colombia", 210800000);
-    static Aeropuerto aeropuertoPrivado1 = new AeropuertoPrivado("Olaya Herrera", "Medellín - Antioquia", "Colombia");
 
-    static Aeropuerto aeropuertoPrivado2 = new AeropuertoPrivado("Rafael Nuñez", "Cartagena - Bolivar", "Colombia");
 
     //---------Compañias / Aerolineas ------------
     static Company company1 = new Company("Avianca");
@@ -47,6 +21,7 @@ public class Main {
     static Company companies[] = {company1,company2,company3,company4};
 
     public static void main(String[] args) {
+        insertarAeropuertos(aeropuerto);
         menu();
     }
 
@@ -60,10 +35,10 @@ public class Main {
                 opcion = entrada.nextInt();
                 switch (opcion) {
                     case 1:
-                        insertarAeropuertos(aeropuerto);
+                        consultarAeropuertos(aeropuerto);
                         break;
                     case 2:
-                        //publicoPrivado("El Dorado");
+                        publicoPrivado("Olaya Herrera");
                         break;
                     case 3:
                         //aerolineas("Olaya Herrera");
@@ -73,6 +48,11 @@ public class Main {
                         break;
                     case 5:
                         //verVuelos("Rionegro", "Atlanta");
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        System.out.println("Opción incorrecta");
                         break;
                 }
                 System.out.println("Desea digitar otra opción (S/N)");
@@ -84,10 +64,9 @@ public class Main {
         while (opcion < 1 && opcion  > 6 );
 
     }
-
     public static void insertarAeropuertos(Aeropuerto aeropuerto[]) {
         //---- Aeropuerto 0---
-        aeropuerto[0] = new AeropuertoPublico("Jose Maria Cordoba", "Rionegro - Antioquia", "Colombia", 100050200));
+        aeropuerto[0] = new AeropuertoPublico("Jose Maria Cordoba", "Rionegro - Antioquia", "Colombia", 100050200);
         aeropuerto[0].insertarCompany(new Company("Avianca"));
         aeropuerto[0].insertarCompany(new Company("Latam"));
         aeropuerto[0].insertarCompany(new Company("American Airlines"));
@@ -102,83 +81,76 @@ public class Main {
 
         //---- Aeropuerto 1---
         aeropuerto[1] = new AeropuertoPublico("El Dorado", "CD Bogota", "Colombia", 210800000);
+        aeropuerto[1].insertarCompany(new Company("Viva Colombia"));
+        aeropuerto[1].insertarCompany(new Company("Latam"));
+        aeropuerto[1].insertarCompany(new Company("American Airlines"));
+        aeropuerto[1].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(103, "Bogotá", "Madrid", 400000, 70));
+        aeropuerto[1].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(130,"Bogotá", "Seúl", 3000000, 70));
+        aeropuerto[1].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(107, "Bogotá", "Miami", 1000000, 78));
+        aeropuerto[1].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(121, "Bogotá", "Londres", 1800000, 66));
+        aeropuerto[1].traerComapy("Latam").insertarVuelo(new Vuelo(109, "Bogotá", "Medellín", 80000, 80));
+        aeropuerto[1].traerComapy("Latam").insertarVuelo(new Vuelo(133, "Bogotá", "Madrid", 400000, 70));
+        aeropuerto[1].traerComapy("Latam").insertarVuelo(new Vuelo(117, "Bogotá", "Miami", 1000000, 78));
+        aeropuerto[1].traerComapy("Latam").insertarVuelo(new Vuelo(160, "Bogotá", "Paris", 2200000, 60));
+        aeropuerto[1].traerComapy("Latam").insertarVuelo(new Vuelo(119, "Bogotá", "Medellín", 80000, 80));
+        aeropuerto[1].traerComapy("American Airlines").insertarVuelo(new Vuelo(124, "Bogotá", "Londres", 1800000, 66));
+        aeropuerto[1].traerComapy("American Airlines").insertarVuelo(new Vuelo(161, "Bogotá", "Paris", 2200000, 60));
 
-
-        aeropuerto[1].insertarCompany(company2);
-        aeropuerto[1].insertarCompany(company3);
-        aeropuerto[1].insertarCompany(company4);
-        //company2.insertarVuelo(vuelo2);
-        company2.insertarVuelo(vuelo6);
-        //company2.insertarVuelo(vuelo7);
-        //company2.insertarVuelo(vuelo8);
-
-       // aeropuerto[1].traerComapy(company2.toString()).insertarVuelo(vuelo2);
-        //aeropuerto[1].traerComapy(company2.toString()).insertarVuelo(vuelo6);
-        //aeropuerto[1].traerComapy(company2.toString()).insertarVuelo(vuelo7);
-        //aeropuerto[1].traerComapy(company2.toString()).insertarVuelo(vuelo8);
-        //company3.insertarVuelo(vuelo9);
-        company3.insertarVuelo(vuelo2);
-        //company3.insertarVuelo(vuelo7);
-        //company3.insertarVuelo(vuelo10);
-        //company4.insertarVuelo(vuelo9);
-       // company4.insertarVuelo(vuelo8);
-        //company4.insertarVuelo(vuelo10);
-        //aeropuerto[1].traerComapy(company3.toString()).insertarVuelo(vuelo9);
-        //aeropuerto[1].traerComapy(company3.toString()).insertarVuelo(vuelo2);
-        //aeropuerto[1].traerComapy(company3.toString()).insertarVuelo(vuelo7);
-        //aeropuerto[1].traerComapy(company3.toString()).insertarVuelo(vuelo10);
-        //aeropuerto[1].traerComapy(company4.toString()).insertarVuelo(vuelo9);
-        //aeropuerto[1].traerComapy(company4.toString()).insertarVuelo(vuelo8);
-        //aeropuerto[1].traerComapy(company4.toString()).insertarVuelo(vuelo10);
         //---- Aeropuerto 2---
-        aeropuerto[2] = aeropuertoPrivado1;
-        ((AeropuertoPrivado) aeropuertoPrivado1).insertarEmpresas(empresasPatrocinadoras);
-        aeropuerto[2].insertarCompany(company1);
-        aeropuerto[2].insertarCompany(company2);
-        //aeropuerto[2].insertarCompany(company3);
-        aeropuerto[2].insertarCompany(company4);
-        //company1.insertarVuelo(vuelo11);
-        //company1.insertarVuelo(vuelo12);
-        company1.insertarVuelo(vuelo13);
-        //company1.insertarVuelo(vuelo14);
-        //company2.insertarVuelo(vuelo13);
-        //company2.insertarVuelo(vuelo12);
-        //company3.insertarVuelo(vuelo14);
-        //company3.insertarVuelo(vuelo11);
-        company3.insertarVuelo(vuelo12);
-        //company4.insertarVuelo(vuelo11);
-        //company4.insertarVuelo(vuelo13);
-        //company4.insertarVuelo(vuelo14);
+        aeropuerto[2] = new AeropuertoPrivado("Olaya Herrera", "Medellín - Antioquia", "Colombia");
+        ((AeropuertoPrivado) aeropuerto[2]).insertarEmpresas(empresasPatrocinadoras);
+        aeropuerto[2].insertarCompany(new Company("Avianca"));
+        aeropuerto[2].insertarCompany(new Company("Viva Colombia"));
+        aeropuerto[2].insertarCompany(new Company("Latam"));
+        aeropuerto[2].insertarCompany(new Company("American Airlines"));
+        aeropuerto[2].traerComapy("Avianca").insertarVuelo(new Vuelo(202, "Medellín", "Cali", 95000, 70));
+        aeropuerto[2].traerComapy("Avianca").insertarVuelo(new Vuelo(270, "Medellín", "Cartagena", 120000, 55));
+        aeropuerto[2].traerComapy("Avianca").insertarVuelo(new Vuelo(284, "Medellín", "Barranquilla", 120000, 60));
+        aeropuerto[2].traerComapy("Avianca").insertarVuelo(new Vuelo(251, "Medellín", "Choco", 70000, 60));
+        aeropuerto[2].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(281, "Medellín", "Barranquilla", 120000, 60));
+        aeropuerto[2].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(274, "Medellín", "Cartagena", 120000, 55));
+        aeropuerto[2].traerComapy("Latam").insertarVuelo(new Vuelo(250, "Medellín", "Choco", 70000, 60));
+        aeropuerto[2].traerComapy("Latam").insertarVuelo(new Vuelo(222, "Medellín", "Cali", 95000, 70));
+        aeropuerto[2].traerComapy("Latam").insertarVuelo(new Vuelo(271, "Medellín", "Cartagena", 120000, 55));
+        aeropuerto[2].traerComapy("American Airlines").insertarVuelo(new Vuelo(212, "Medellín", "Cali", 95000, 70));
+        aeropuerto[2].traerComapy("American Airlines").insertarVuelo(new Vuelo(280, "Medellín", "Barranquilla", 120000, 60));
+        aeropuerto[2].traerComapy("American Airlines").insertarVuelo(new Vuelo(251, "Medellín", "Choco", 70000, 60));
+
         //---- Aeropuerto 3---
-        aeropuerto[3] = aeropuertoPrivado2;
-        ((AeropuertoPrivado) aeropuertoPrivado2).insertarEmpresas(empresasPatrocinadoras2);
-        aeropuerto[3].insertarCompany(company1);
-        aeropuerto[3].insertarCompany(company2);
-        aeropuerto[3].insertarCompany(company4);
-        //company1.insertarVuelo(vuelo15);
-        //company1.insertarVuelo(vuelo16);
-        company1.insertarVuelo(vuelo18);
-        //company2.insertarVuelo(vuelo15);
-        company2.insertarVuelo(vuelo16);
-        //company2.insertarVuelo(vuelo17);
-        //company4.insertarVuelo(vuelo15);
-        company4.insertarVuelo(vuelo16);
-        //company4.insertarVuelo(vuelo17);
-        //company4.insertarVuelo(vuelo18);
-        for (int i = 0; i < aeropuerto.length; i++) {
-            if (aeropuerto[i].getClass().toString().equals("class AeropuertoPublico")) {
+        aeropuerto[3] = new AeropuertoPrivado("Rafael Nuñez", "Cartagena - Bolivar", "Colombia");
+        ((AeropuertoPrivado) aeropuerto[3]).insertarEmpresas(empresasPatrocinadoras2);
+        aeropuerto[3].insertarCompany(new Company("Avianca"));
+        aeropuerto[3].insertarCompany(new Company("Viva Colombia"));
+        aeropuerto[3].insertarCompany(new Company("American Airlines"));
+        aeropuerto[3].traerComapy("Avianca").insertarVuelo(new Vuelo(301, "Cartagena", "SanAndres", 170000, 68));
+        aeropuerto[3].traerComapy("Avianca").insertarVuelo(new Vuelo(361, "Cartagena", "Rionegro", 80000, 70));
+        aeropuerto[3].traerComapy("Avianca").insertarVuelo(new Vuelo(360, "Cartagena", "Boston", 1900000, 70));
+        aeropuerto[3].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(311, "Cartagena", "SanAndres", 170000, 68));
+        aeropuerto[3].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(363, "Cartagena", "Rionegro", 80000, 70));
+        aeropuerto[3].traerComapy("Viva Colombia").insertarVuelo(new Vuelo(3001, "Cartagena", "Bogotá", 110000, 76));
+        aeropuerto[3].traerComapy("American Airlines").insertarVuelo(new Vuelo(301, "Cartagena", "SanAndres", 170000, 68));
+        aeropuerto[3].traerComapy("American Airlines").insertarVuelo(new Vuelo(369, "Cartagena", "Rionegro", 80000, 70));
+        aeropuerto[3].traerComapy("American Airlines").insertarVuelo(new Vuelo(3004, "Cartagena", "Bogotá", 110000, 76));
+        aeropuerto[3].traerComapy("American Airlines").insertarVuelo(new Vuelo(365, "Cartagena", "Boston", 1900000, 70));
+
+    }
+
+    public static void consultarAeropuertos(Aeropuerto aeropuertos[]){
+        for (int i = 0; i < aeropuertos.length; i++) {
+            //aeropuertos[i].getClass().toString().equals("class AeropuertoPublico")
+            if (aeropuertos[i] instanceof AeropuertoPublico) {
                 System.out.println("       ----Aeropuerto publicos-----");
-                System.out.println("Nombre: " + aeropuerto[i].getNombre() + " Ciudad/Departamento: " + aeropuerto[i].getCiudad() + " Pais: " + aeropuerto[i].getPais());
+                System.out.println("Nombre: " + aeropuertos[i].getNombre() + " Ciudad/Departamento: " + aeropuertos[i].getCiudad() + " Pais: " + aeropuertos[i].getPais());
                 System.out.println();
             } else {
                 System.out.println("       ----Aeropuertos privados-----");
-                System.out.println("Nombre: " + aeropuerto[i].getNombre() + " Ciudad/Departamento: " + aeropuerto[i].getCiudad() + " Pais: " + aeropuerto[i].getPais());
+                System.out.println("Nombre: " + aeropuertos[i].getNombre() + " Ciudad/Departamento: " + aeropuertos[i].getCiudad() + " Pais: " + aeropuertos[i].getPais());
                 System.out.println();
             }
         }
     }
 
-    /*public static void publicoPrivado(String nombreAeropuerto) {
+    public static void publicoPrivado(String nombreAeropuerto) {
         for (int i = 0; i < aeropuerto.length; i++) {
             if (aeropuerto[i].getNombre() == nombreAeropuerto) {
                 if (aeropuerto[i].getClass().toString().equals("class AeropuertoPublico")) {
@@ -186,11 +158,12 @@ public class Main {
                 } else {
                     System.out.println("Empresas patrocinadoras: " + i++ + ". " + ((AeropuertoPrivado) aeropuerto[i]).getEmpresas());
                 }
-            } else {
-                System.out.println("Aeropuerto no encontrado");
             }
+            /*else {
+                System.out.println("Aeropuerto no encontrado");
+            }*/
         }
-    }*/
+    }
 
     /*public static void aerolineas(String nombreAeropuerto) {
         for (int i = 0; i < aeropuerto.length; i++) {

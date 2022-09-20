@@ -18,7 +18,7 @@ public class AeropuertoPrivado extends Aeropuerto{
     }
 
     public String[] getEmpresas() {
-        return empresas;
+        return  empresas;
     }
 
     public int getNumEmpresas() {
