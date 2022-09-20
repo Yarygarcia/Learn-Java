@@ -2,7 +2,7 @@ public class Aeropuerto {
     private String nombre;
     private String ciudad;
     private String pais;
-    private Company listCompanies[] = new Company[10];
+    private Company listCompanies[]= new Company[10];
     private int numCompany;
 
     public Aeropuerto(String nombre, String ciudad, String pais) {
