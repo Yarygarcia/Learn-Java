@@ -11,15 +11,6 @@ public class Main {
     final static int numAeropuerto = 4;
     static Aeropuerto aeropuerto[] = new Aeropuerto[numAeropuerto];
 
-
-    //---------Compañias / Aerolineas ------------
-    static Company company1 = new Company("Avianca");
-    static Company company2 = new Company("Viva Colombia");
-    static Company company3 = new Company("Latam");
-    static Company company4 = new Company("American Airlines");
-
-    static Company companies[] = {company1,company2,company3,company4};
-
     public static void main(String[] args) {
         insertarAeropuertos(aeropuerto);
         menu();
