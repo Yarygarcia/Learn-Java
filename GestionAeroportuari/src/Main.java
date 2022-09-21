@@ -4,7 +4,7 @@ public class Main {
     static Scanner entrada = new Scanner(System.in);
     //   -------------------Empresas patrocinadoras ------------
     static String empresasPatrocinadoras[] = {"Ecopetrol", "Claro", "Mercado Libre", "Santo Domingo"};
-    static String empresasPatrocinadoras2[] = {"Isagen", "Aardila Lule", "Emp"};
+    static String empresasPatrocinadoras2[] = {"Isagen", "Aardila Lule", "Epm"};
 
 
     //------------Aeropuertos-------------
@@ -38,10 +38,10 @@ public class Main {
                         consultarAeropuertos(aeropuerto);
                         break;
                     case 2:
-                        publicoPrivado("Olaya Herrera");
+                        publicoPrivado(aeropuerto);
                         break;
                     case 3:
-                        //aerolineas("Olaya Herrera");
+                        aerolineas("El Dorado");
                         break;
                     case 4:
                         //aerolineasVuelos("El Dorado", "Avianca");
@@ -66,7 +66,7 @@ public class Main {
     }
     public static void insertarAeropuertos(Aeropuerto aeropuerto[]) {
         //---- Aeropuerto 0---
-        aeropuerto[0] = new AeropuertoPublico("Jose Maria Cordoba", "Rionegro - Antioquia", "Colombia", 100050200);
+        aeropuerto[0] = new AeropuertoPublico("Jose Maria Cordoba", "Rionegro - Antioquia", "Colombia", 100050200f);
         aeropuerto[0].insertarCompany(new Company("Avianca"));
         aeropuerto[0].insertarCompany(new Company("Latam"));
         aeropuerto[0].insertarCompany(new Company("American Airlines"));
@@ -80,7 +80,7 @@ public class Main {
 
 
         //---- Aeropuerto 1---
-        aeropuerto[1] = new AeropuertoPublico("El Dorado", "CD Bogota", "Colombia", 210800000);
+        aeropuerto[1] = new AeropuertoPublico("El Dorado", "CD Bogota", "Colombia", 210800000f);
         aeropuerto[1].insertarCompany(new Company("Viva Colombia"));
         aeropuerto[1].insertarCompany(new Company("Latam"));
         aeropuerto[1].insertarCompany(new Company("American Airlines"));
@@ -136,12 +136,11 @@ public class Main {
     }
 
     public static void consultarAeropuertos(Aeropuerto aeropuertos[]){
-        for (int i = 0; i < aeropuertos.length; i++) {
+        for (int i = 0; i <aeropuertos.length; i++) {
             //aeropuertos[i].getClass().toString().equals("class AeropuertoPublico")
             if (aeropuertos[i] instanceof AeropuertoPublico) {
                 System.out.println("       ----Aeropuerto publicos-----");
                 System.out.println("Nombre: " + aeropuertos[i].getNombre() + " Ciudad/Departamento: " + aeropuertos[i].getCiudad() + " Pais: " + aeropuertos[i].getPais());
-                System.out.println();
             } else {
                 System.out.println("       ----Aeropuertos privados-----");
                 System.out.println("Nombre: " + aeropuertos[i].getNombre() + " Ciudad/Departamento: " + aeropuertos[i].getCiudad() + " Pais: " + aeropuertos[i].getPais());
@@ -150,39 +149,43 @@ public class Main {
         }
     }
 
-    public static void publicoPrivado(String nombreAeropuerto) {
+    public static void publicoPrivado(Aeropuerto aeropuerto[]) {
         for (int i = 0; i < aeropuerto.length; i++) {
-            if (aeropuerto[i].getNombre() == nombreAeropuerto) {
-                if (aeropuerto[i].getClass().toString().equals("class AeropuertoPublico")) {
-                    System.out.println("Subvencion: " + ((AeropuertoPublico) aeropuerto[i]).getDineroNacion());
-                } else {
-                    System.out.println("Empresas patrocinadoras: " + i++ + ". " + ((AeropuertoPrivado) aeropuerto[i]).getEmpresas());
+            if (aeropuerto[i] instanceof AeropuertoPrivado) {
+                System.out.println("Aeropuerto privado");
+                System.out.println(aeropuerto[i].getNombre());
+                String [] empresas = ((AeropuertoPrivado)aeropuerto[i]).getEmpresas();
+                System.out.println("Empresas patrocinadoras");
+                for(int e =0; e <empresas.length; e++){
+                    System.out.println("  "+ (e+1) +"." + empresas[e]);
+
                 }
+            }else{
+                System.out.println("Aeropuerto publico");
+                System.out.println(aeropuerto[i].getNombre());
+                System.out.println("Subvencion: " + ((AeropuertoPublico) aeropuerto[i]).getDineroNacion());
             }
-            /*else {
-                System.out.println("Aeropuerto no encontrado");
-            }*/
+                System.out.println();
         }
     }
 
-    /*public static void aerolineas(String nombreAeropuerto) {
-        for (int i = 0; i < aeropuerto.length; i++) {
-            if (aeropuerto[i].getNombre().equals(nombreAeropuerto)) {
-                System.out.println(aeropuerto[i].getListCompanies());
-            } else {
-                System.out.println("Aeropuerto no encontrado");
+    public static void aerolineas(String nombreAeropuerto) {
+        for(int i =0; i < aeropuerto.length; i++){
+            if(aeropuerto[i].getNombre() == nombreAeropuerto) {
+                System.out.println(aeropuerto[i].getNombre());
+                for(int e =0; e < aeropuerto[i].getNumCompany(); e++){
+                    Company aero[] = aeropuerto[i].getListCompanies();
+                    System.out.println((e+1)+ ". "+ aero[e].getNameCompany());
+                }
             }
         }
-    }*/
+    }
 
     /*public static void aerolineasVuelos(String nombreAeropuerto, String NombreAerolinea) {
         for (int i = 0; i < aeropuerto.length; i++) {
             for (int e = 0; e < aeropuerto[i].getNumCompany(); i++){
                 if (aeropuerto[i].getNombre().equals(nombreAeropuerto) && aeropuerto[i].traerComapy(NombreAerolinea).equals(NombreAerolinea)){
                     aeropuerto[i].traerComapy(NombreAerolinea).listarVuelos();
-                }
-                else{
-                    System.out.println("No exsite aerolinea y/o aeropuerto");
                 }
             }
         }
