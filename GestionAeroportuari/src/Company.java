@@ -41,11 +41,15 @@ public class Company {
     }
 
     public Vuelo obtenerVuelo(String ciudadO, String ciudadD) {
+        boolean encontrado = false;
         Vuelo vuelo = null;
-        for (int i = 0; i < listaVuelos.length; i++) {
-            if (listaVuelos[i].getCiudadOrigen().equals(ciudadO) && listaVuelos[i].getCiudadDestino().equals(ciudadD)) {
+        int i =0;
+        while((!encontrado)&& (i < listaVuelos.length)) {
+            if (listaVuelos[i].getCiudadOrigen()== ciudadO && listaVuelos[i].getCiudadDestino()==ciudadD) {
+                encontrado = true;
                 vuelo = listaVuelos[i];
             }
+            i++;
         }
         return vuelo;
     }
