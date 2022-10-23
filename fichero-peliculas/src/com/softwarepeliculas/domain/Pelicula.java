@@ -17,6 +17,6 @@ public class Pelicula {
     }
     @Override
     public String toString(){
-        return "Pelicula: " + nombre + "\n";
+        return "" + nombre + "\n";
     }
 }

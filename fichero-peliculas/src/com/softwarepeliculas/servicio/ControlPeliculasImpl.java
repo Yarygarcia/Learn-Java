@@ -4,7 +4,6 @@ import com.softwarepeliculas.datos.AccesoDatosImpl;
 import com.softwarepeliculas.datos.IAccesoDatos;
 import com.softwarepeliculas.domain.Pelicula;
 import com.softwarepeliculas.excepciones.AccesoDatosExcepcion;
-import com.softwarepeliculas.excepciones.LecturaDatosExcepcion;
 
 import java.util.List;
 
@@ -50,9 +49,11 @@ public class ControlPeliculasImpl implements IControlPeliculas{
             e.printStackTrace(System.out);
         }
         if (resultado == null){
-            System.out.println("Pelicula " + nombreABuscarPelicula + " No encontrada");
+            System.out.println("Pelicula NO encontrada");
+            System.out.println();
         }else{
-            System.out.println("Pelicula "+ resultado + " encontrada");
+            System.out.println("Pelicula encontrada con exito");
+            System.out.println();
         }
 
     }

@@ -66,11 +66,8 @@ public class AccesoDatosImpl  implements  IAccesoDatos{
             int contador =1;
             while (linea!= null){
                 if(buscarNombrePelicula != null && buscarNombrePelicula.equalsIgnoreCase(linea)){
-                    resultado = "Pelicula " + buscarNombrePelicula + "encontrada";
-
+                    resultado = "Pelicula " + buscarNombrePelicula + "encontrada en el indice " + contador;
                     break;
-                }else {
-                    resultado = "Pelicula " + buscarNombrePelicula + "NO encontrada";
                 }
                 linea = lector.readLine();
                 contador++;
