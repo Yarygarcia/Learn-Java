@@ -30,7 +30,7 @@ public class JframeConector extends JFrame {
         JframeConector jframeConector = new JframeConector();
         jframeConector.setTitle("Registro estudiantes");
         jframeConector.setContentPane(new JframeConector().panel1);
-        jframeConector.setSize(800,400);
+        jframeConector.setSize(850,400);
         jframeConector.setLocationRelativeTo(null);
         jframeConector.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jframeConector.setVisible(true);
