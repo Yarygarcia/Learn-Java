@@ -35,22 +35,6 @@ public class EmpleadoImplementacion implements IEmpleado{
     }
 
     @Override
-    public void listar(Empleado empleado) {
-        try{
-            conexion = conector.conectar();
-            PreparedStatement listar = conexion.prepareStatement("SELECT * FROM empleados");
-            ResultSet consultar = listar.executeQuery();
-            while(consultar.next()){
-                empleado.setNombre(consultar.getString(2));
-                empleado.setCargo(consultar.getString(3));
-            }
-            conector.desconectar();
-        }catch(SQLException exception){
-            System.out.println("Error al listar " + exception.getMessage());
-        }
-    }
-
-    @Override
     public void Verificar() {
         try{
             conexion = conector.conectar();

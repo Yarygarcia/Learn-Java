@@ -6,7 +6,6 @@ public interface IEmpleado {
 
     public void regitrar(Empleado empleado);
 
-    public void listar(Empleado empleado);
     public  void Verificar();
 
     public void modificar( Empleado empleado, int id);

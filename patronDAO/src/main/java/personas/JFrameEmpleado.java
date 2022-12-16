@@ -18,7 +18,6 @@ public class JFrameEmpleado extends JFrame {
     private JButton btnListar;
     private JButton btnVerificar;
     private JTextField txtBuscar;
-    private JButton btnBuscar;
     private JButton btnEliminar;
     private JButton btnBuscarModificar;
     private JButton btnModificar;
@@ -62,28 +61,12 @@ public class JFrameEmpleado extends JFrame {
                 }
             }
         });
-
-
+        
         btnNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     limpiar();
-                }catch (Exception exception){
-                    System.out.println(exception.getMessage());
-                }
-            }
-        });
-        btnListar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    Empleado empleado = new Empleado(txtNombre.getText(), combCargo.getSelectedItem().toString());
-                    empleadoImplementacion.listar(empleado);
-                    textListar.append(empleado.getNombre());
-                    textListar.append("   ");
-                    textListar.append(empleado.getCargo());
-                    textListar.append("\n");
                 }catch (Exception exception){
                     System.out.println(exception.getMessage());
                 }
