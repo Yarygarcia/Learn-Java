@@ -1,10 +1,8 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JframeConector extends JFrame {
     private JButton conectarALaBaseButton;
@@ -24,6 +22,8 @@ public class JframeConector extends JFrame {
     private JButton btnBuscar;
     private JButton btnModificar;
     private JButton btnBuscarModificar;
+    private JTable table1;
+    private JButton traerDatosButton;
 
 
     public static void main(String[]args){
@@ -202,6 +202,38 @@ public class JframeConector extends JFrame {
                 }catch (SQLException ex5){
                     JOptionPane.showMessageDialog(null, "Error al traer empledo  :(");
                     System.out.println(ex5.getMessage());
+                }
+            }
+        });
+        traerDatosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    conexion = conector.conectar();
+                    DefaultTableModel model = new DefaultTableModel();
+                    table1.setModel(model);
+                    PreparedStatement seleccionar = conexion.prepareStatement("SELECT * FROM empeado");
+                    ResultSet consultar = seleccionar.executeQuery();
+
+                    ResultSetMetaData datos = consultar.getMetaData();
+
+                    int numeroColumnas = datos.getColumnCount();
+
+                    model.addColumn("Identificación");
+                    model.addColumn("Nombre");
+                    model.addColumn("Telefono");
+                    model.addColumn("Profesión");
+
+                    while (consultar.next()){
+                        Object arreglo [] = new Object[numeroColumnas];
+                        for(int i =0; i < numeroColumnas; i++){
+                            arreglo[i] = consultar.getObject(i+1);
+                        }
+                        model.addRow(arreglo);
+                    }
+                    conector.desconectar();
+                }catch (Exception exception){
+                    System.out.println(exception.getMessage());
                 }
             }
         });

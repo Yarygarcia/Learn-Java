@@ -1,5 +1,6 @@
 package personas;
 
+import dao.Conector;
 import interfaces.EmpleadoImplementacion;
 
 import javax.swing.*;
@@ -61,7 +62,7 @@ public class JFrameEmpleado extends JFrame {
                 }
             }
         });
-        
+
         btnNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,5 +119,8 @@ public class JFrameEmpleado extends JFrame {
         jFrameEmpleado.setTitle("Empleados");
         jFrameEmpleado.setSize(800, 500);
         jFrameEmpleado.setLocationRelativeTo(null);
+        Conector con = Conector.getInstance();
+        con.conectar();
+        con.desconectar();
     }
 }

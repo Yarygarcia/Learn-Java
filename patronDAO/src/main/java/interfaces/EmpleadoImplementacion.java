@@ -88,10 +88,11 @@ public class EmpleadoImplementacion implements IEmpleado{
     @Override
     public void eliminar(Empleado empleado, int idE) {
         try {
-            conexion = conector.conectar();
-            PreparedStatement eliminar = conexion.prepareStatement("DELETE FROM empleados WHERE id=?");
-            eliminar.setInt(1, idE);
-            eliminar.executeUpdate();
+            conector.conectar();
+//            conexion = conector.conectar();
+//            PreparedStatement eliminar = conexion.prepareStatement("DELETE FROM empleados WHERE id=?");
+//            eliminar.setInt(1, idE);
+//            eliminar.executeUpdate();
             conector.desconectar();
         }catch (Exception exception){
             System.out.println(exception.getMessage());
