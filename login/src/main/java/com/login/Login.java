@@ -40,7 +40,7 @@ public class Login extends JFrame{
         login.setContentPane(new Login().panel);
         login.setVisible(true);
         login.setTitle("Login");
-        login.setSize(470, 480);
+        login.setSize(490, 495);
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -89,8 +89,12 @@ public class Login extends JFrame{
                     logueoExitoso();
                     limpiar();
                     login.setVisible(false);
-                    Tabla tabla = new Tabla();
-                    tabla.setVisible(true);
+                    Tabla table = new Tabla();
+                    table.tabla();
+//                    Tabla tabla = new Tabla();
+//                    tabla.setVisible(true);
+//                    tabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                    tabla.setLocationRelativeTo(null);
 
                 } else {
                     noExiste();
