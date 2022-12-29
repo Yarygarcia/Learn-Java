@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class UsuarioDAO {
     private final String  SQL_SELECT ="SELECT * FROM usuarios";
     private final String SQL_ELIMINAR = "DELETE FROM usuarios WHERE id =?";
-    private final String SQL_CREAR = "INSERT INTO usuarios(user, psw) VALUES(?,?)";
+    private final String SQL_CREAR = "INSERT INTO usuarios(id, user, psw) VALUES(?, ?,?)";
     private  final String SQL_ACTUALIZAR = "UPDATE usuarios SET user=?, psw=? WHERE id=?";
 
     private final String SQL_BUSCAR = "SELECT * FROM usuarios WHERE id =?";
@@ -47,17 +47,19 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public void eliminar(Usuario usuario){
+    public void eliminar(Usuario usuario) throws SQLException {
         PreparedStatement eliminar;
-        ResultSet consulta;
 
         try{
             conexion = conector.conectar();
+            conexion.setAutoCommit(false);
             eliminar = conexion.prepareStatement(SQL_ELIMINAR);
             eliminar.setInt(1, usuario.getId());
             eliminar.executeUpdate();
+            conexion.commit();
             conector.desconectar();
         }catch (SQLException exception){
+            conexion.rollback();
             System.out.println(exception.getMessage());
         }
     }
@@ -66,12 +68,13 @@ public class UsuarioDAO {
         try{
             conexion = conector.conectar();
             crear = conexion.prepareStatement(SQL_CREAR);
-            crear.setString(1, usuario.getUser());
-            crear.setString(2,usuario.getPassword());
+            crear.setInt(1,0);
+            crear.setString(2, usuario.getUser());
+            crear.setString(3,usuario.getPassword());
             crear.executeUpdate();
             conector.desconectar();
-        }catch (Exception exception){
-            System.out.println(exception.getMessage());
+        }catch (SQLException exception){
+            System.out.println("Error: "+exception.getMessage());
         }
     }
 

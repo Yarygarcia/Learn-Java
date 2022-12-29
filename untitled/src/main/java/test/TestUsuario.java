@@ -102,10 +102,10 @@ public class TestUsuario extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    Usuario usuario = new Usuario();
-                    usuario.setUser(txtUser.getText());
-                    usuario.setPassword(String.valueOf(txtPsw.getPassword()));
-                    usuario.setId(Integer.parseInt(txtBuscar.getText().trim()));
+                    int id = Integer.parseInt(txtBuscar.getText());
+                    String user = txtUser.getText();
+                    String psw = String.valueOf(txtPsw.getPassword());
+                    Usuario usuario = new Usuario(id, user,psw);
                     usuarioDAO.actualizar(usuario);
                     JOptionPane.showMessageDialog(null, "Usuario actualizado con exito!!");
                 }catch (Exception exception){

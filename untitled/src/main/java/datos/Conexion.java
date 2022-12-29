@@ -18,7 +18,7 @@ public class Conexion {
         return  instancia;
     }
 
-    public Connection conectar(){
+    public Connection conectar() throws SQLException {
         try{
             conexion = DriverManager.getConnection(URL, USER, PSW);
             System.out.println("Conexión exitosa");
