@@ -1,0 +1,14 @@
+th{
+    background: #cbfced;
+}
+th, td{
+    border: 1px solid black;
+    padding: 8px 12px;
+}
+#eliminar{
+    padding: 0px 14px;
+    /*margin: 18px;*/
+}
+#editar{
+    padding-right: 14px ;
+}
