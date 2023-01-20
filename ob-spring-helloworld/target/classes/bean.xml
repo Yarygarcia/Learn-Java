@@ -3,5 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="mundo" class="com.example.beans.Mundo"></bean>
+<bean id="jugador" class="com.example.beans.Jugador" autowire="byName">
+        <property name="nombre" value="Felipe"></property>
+        <property name="numero" value="3"></property>
+    </bean>
+    <bean id="barcelona" class="com.example.beans.Barcelona"></bean>
+    <bean id="realMadrid" class="com.example.beans.RealMadrid"></bean>
 </beans>
