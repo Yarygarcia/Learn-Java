@@ -1,4 +1,4 @@
-package com.example.obspringapi;
+package com.example.obspringapi.entities;
 
 import jakarta.persistence.*;
 
@@ -16,13 +16,13 @@ public class Libro {
     private Double precio;
     @Column(name="fecha_publicacion")
     private LocalDate fechaPublicacion;
-    private double online;
+    private boolean online;
 
     public Libro(){
 
     }
 
-    public Libro(Long id, String titulo, String autor, Integer numPaginas, Double precio, LocalDate fechaPublicacion, double online) {
+    public Libro(Long id, String titulo, String autor, Integer numPaginas, Double precio, LocalDate fechaPublicacion, boolean online) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -80,11 +80,11 @@ public class Libro {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public double getOnline() {
+    public boolean getOnline() {
         return online;
     }
 
-    public void setOnline(double online) {
+    public void setOnline(boolean online) {
         this.online = online;
     }
 
